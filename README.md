@@ -1,4 +1,4 @@
-# Influencer-Sponsor Campaign Management System
+# SponsorMatch
 
 ## Project Overview
 
