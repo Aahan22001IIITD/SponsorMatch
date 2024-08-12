@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Campaigns</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Your Campaigns</h1>
+        {% if campaigns %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Niche</th>
+                        <th>Budget</th>
+                        <th>Visibility</th>
+                        <th>Way</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for campaign in campaigns %}
+                        <tr>
+                            <td>{{ campaign.id }}</td>
+                            <td>{{ campaign.desc }}</td>
+                            <td>{{ campaign.s_date }}</td>
+                            <td>{{ campaign.e_date }}</td>
+                            <td>{{ campaign.niche }}</td>
+                            <td>${{ campaign.budget }}</td>
+                            <td>{{ 'Public' if campaign.visibility == 1 else 'Private' }}</td>
+                            <td>{{ 'Sponsor' if campaign.way == 0 else 'Influencer' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No campaigns found.</p>
+        {% endif %}
+        <a href="/sponsor/{{ sponsor.Spons_id }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+</body>
+</html>

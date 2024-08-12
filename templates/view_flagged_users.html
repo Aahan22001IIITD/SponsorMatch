@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Flagged Users</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Flagged Users</h1>
+        
+        <h3>Flagged Campaigns</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Campaign ID</th>
+                    <th>Campaign Description</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flagged_campaign in flagged_campaigns %}
+                <tr>
+                    <td>{{ flagged_campaign.campaign_id }}</td>
+                    <td>{{ flagged_campaign.campaign_name }}</td>
+                    <td>{{ flagged_campaign.reason }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <h3>Flagged Influencers</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Influencer ID</th>
+                    <th>Influencer Name</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flagged_influencer in flagged_influencers %}
+                <tr>
+                    <td>{{ flagged_influencer.influencer_id }}</td>
+                    <td>{{ flagged_influencer.influencer_name }}</td>
+                    <td>{{ flagged_influencer.reason }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

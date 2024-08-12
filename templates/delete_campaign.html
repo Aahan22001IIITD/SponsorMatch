@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Campaign</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Delete Campaign</h1>
+        <a href="/" class="btn btn-primary mb-3">Back to Dashboard</a>
+
+        <h2>{{ campaign.desc }}</h2>
+        <p><strong>Description:</strong> {{ campaign.desc }}</p>
+        <p><strong>Start Date:</strong> {{ campaign.s_date }}</p>
+        <p><strong>End Date:</strong> {{ campaign.e_date }}</p>
+        <p><strong>Niche:</strong> {{ campaign.niche }}</p>
+        <p><strong>Budget:</strong> ${{ campaign.budget }}</p>
+        <p><strong>Visibility:</strong> {% if campaign.visibility == 1 %} Public {% else %} Private {% endif %}</p>
+        <p><strong>Way:</strong> {{ campaign.way }}</p>
+
+        <form method="POST" action="{{ url_for('delete_campaign', spons_id=sponsor.Spons_id, camp_id=campaign.id) }}">
+            <button type="submit" class="btn btn-danger">Delete Campaign</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

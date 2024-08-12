@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #343a40;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 2.5em;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .card-footer {
+            background-color: #f1f1f1;
+        }
+        .campaign-card {
+            margin-bottom: 20px;
+        }
+        .no-results {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+        .card-title {
+            color: #007bff;
+        }
+        .card-text strong {
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Search Results</h1>
+
+        {% if campaigns %}
+            <div class="row">
+                {% for campaign, sponsor in campaigns %}
+                    <div class="col-md-4 campaign-card">
+                        <div class="card">
+                            <div class="card-header">
+                                Campaign ID: {{ campaign.id }}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ campaign.desc }}</h5>
+                                <p class="card-text">
+                                    <strong>Start Date:</strong> {{ campaign.s_date }}<br>
+                                    <strong>End Date:</strong> {{ campaign.e_date }}<br>
+                                    <strong>Niche:</strong> {{ campaign.niche }}<br>
+                                    <strong>Budget:</strong> ${{ campaign.budget }}<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <strong>Sponsor Details:</strong><br>
+                                <p><strong>Name:</strong> {{ sponsor.Name }}</p>
+                                <p><strong>Industry:</strong> {{ sponsor.industry }}</p>
+                                <p><strong>Budget:</strong> ${{ sponsor.budget }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-results">No campaigns found matching your criteria.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

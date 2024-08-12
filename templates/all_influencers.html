@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Influencers</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>All Influencers</h1>
+        <a href="/sponsor/{{ sponsor.Spons_id }}" class="btn btn-secondary mb-3">Back to Dashboard</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Niche</th>
+                    <th>Reach</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for influencer in influencers %}
+                <tr>
+                    <td>{{ influencer.Name }}</td>
+                    <td>{{ influencer.Category }}</td>
+                    <td>{{ influencer.Niche }}</td>
+                    <td>{{ influencer.Reach }}</td>
+                    <td>
+                        <a href="/request_influencer/{{ sponsor.Spons_id }}/{{ influencer.inflid }}" class="btn btn-primary">Request Influencer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

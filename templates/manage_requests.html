@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Requests</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #343a40;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .requests-table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .requests-table th, .requests-table td {
+            padding: 12px;
+            text-align: left;
+        }
+        .requests-table th {
+            background-color: #343a40;
+            color: white;
+        }
+        .requests-table td {
+            background-color: white;
+        }
+        .requests-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .no-requests {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Manage Requests</h1>
+        <a href="/" class="btn btn-primary mb-3">Back to Dashboard</a>
+
+        {% if requests %}
+            <table class="table table-bordered requests-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Campaign ID</th>
+                        <th>Influencer ID</th>
+                        <th>Message</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in requests %}
+                        <tr>
+                            <td>{{ req.reqid }}</td>
+                            <td>{{ req.campid }}</td>
+                            <td>{{ req.inflid }}</td>
+                            <td>{{ req.message }}</td>
+                            <td>${{ req.amount }}</td>
+                            <td>
+                                <form method="POST" action="{{ url_for('manage_requests', spons_id=sponsor.Spons_id) }}">
+                                    <input type="hidden" name="request_id" value="{{ req.reqid }}">
+                                    <button type="submit" name="action" value="accept" class="btn btn-success">Accept</button>
+                                    <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-requests">No requests to manage.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Campaign</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Create New Campaign</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="desc">Description</label>
+                <textarea class="form-control" id="desc" name="desc" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="s_date">Start Date</label>
+                <input type="date" class="form-control" id="s_date" name="s_date" required>
+            </div>
+            <div class="form-group">
+                <label for="e_date">End Date</label>
+                <input type="date" class="form-control" id="e_date" name="e_date" required>
+            </div>
+            <div class="form-group">
+                <label for="niche">Niche</label>
+                <input type="text" class="form-control" id="niche" name="niche" required>
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget</label>
+                <input type="number" class="form-control" id="budget" name="budget" required>
+            </div>
+            <div class="form-group">
+                <label for="visibility">Visibility</label>
+                <select class="form-control" id="visibility" name="visibility">
+                    <option value="0">Public</option>
+                    <option value="1">Private</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="way">Way</label>
+                <select class="form-control" id="way" name="way">
+                    <option value="0">Sponsor</option>
+                    <option value="1000">Influencer</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Campaign</button>
+        </form>
+        <a href="/sponsor/{{ sponsor.Spons_id }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+</body>
+</html>

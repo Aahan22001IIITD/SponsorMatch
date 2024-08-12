@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Influencers</title>
+</head>
+<body>
+    <h1>Influencers</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Niche</th>
+            <th>Reach</th>
+            <th>Profile Photo</th>
+            <th>Username</th>
+        </tr>
+        {% for influencer in influencers %}
+        <tr>
+            <td>{{ influencer.inflid }}</td>
+            <td>{{ influencer.Name }}</td>
+            <td>{{ influencer.Category }}</td>
+            <td>{{ influencer.Niche }}</td>
+            <td>{{ influencer.Reach }}</td>
+            <td>{{ influencer.profilephoto }}</td>
+            <td>{{ influencer.username }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

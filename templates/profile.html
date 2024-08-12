@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ influencer.Name }}'s Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            color: #343a40;
+        }
+        h1 {
+            color: #343a40;
+            font-size: 2.5em;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+        .card-footer {
+            background-color: #f1f1f1;
+        }
+        .campaign-card {
+            margin-bottom: 20px;
+        }
+        .no-campaigns {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+        .profile-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        .requests-btn {
+            margin-top: 20px;
+            background-color: #6c757d;
+            color: white;
+        }
+        .requests-btn:hover {
+            background-color: #5a6268;
+        }
+        .card-title {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>{{ influencer.Name }}'s Profile</h1>
+            <div class="profile-btn">
+                <a href="{{ url_for('influencer_dashboard',inflid=influencer.inflid) }}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+
+        <div class="profile-details mb-4">
+            <h2>Influencer Details</h2>
+            <p><strong>Name:</strong> {{ influencer.Name }}</p>
+            <p><strong>Category:</strong> {{ influencer.Category }}</p>
+            <p><strong>Niche:</strong> {{ influencer.Niche }}</p>
+            <p><strong>Reach:</strong> {{ influencer.Reach }}</p>
+            <p><strong>Username:</strong> {{ influencer.username }}</p>
+            {% if influencer.profilephoto %}
+                <img src="{{ url_for('static', filename='profile_photos/' + influencer.profilephoto) }}" alt="Profile Photo" class="img-fluid">
+            {% endif %}
+        </div>
+
+        <h3 class="mt-4">Ongoing Campaigns</h3>
+        {% if campaigns %}
+            <div class="row">
+                {% for item in campaigns %}
+                    <div class="col-md-4 campaign-card">
+                        <div class="card">
+                            <div class="card-header">
+                                Campaign ID: {{ item.campaign.id }}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.campaign.desc }}</h5>
+                                <p class="card-text">
+                                    <strong>Start Date:</strong> {{ item.campaign.s_date }}<br>
+                                    <strong>End Date:</strong> {{ item.campaign.e_date }}<br>
+                                    <strong>Niche:</strong> {{ item.campaign.niche }}<br>
+                                    <strong>Budget:</strong> ${{ item.campaign.budget }}<br>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <strong>Sponsor Details:</strong><br>
+                                <p><strong>Name:</strong> {{ item.sponsor.Name }}</p>
+                                <p><strong>Industry:</strong> {{ item.sponsor.industry }}</p>
+                                <p><strong>Budget:</strong> ${{ item.sponsor.budget }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-campaigns">No ongoing campaigns.</p>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

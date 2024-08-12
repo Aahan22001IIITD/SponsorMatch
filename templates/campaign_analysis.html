@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campaign Analysis for {{ campaign.desc }}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Campaign Analysis: {{ campaign.desc }}</h1>
+        <a href="/analyse_campaign/{{ sponsor.Spons_id }}" class="btn btn-secondary mb-3">Back to Select Campaign</a>
+
+        <ul class="list-group">
+            <li class="list-group-item">Number of Influencers Requested: {{ requested_count }}</li>
+            <li class="list-group-item">Number of Influencers Accepted: {{ accepted_count }}</li>
+            <li class="list-group-item">Number of Influencers Rejected: {{ rejected_count }}</li>
+            <li class="list-group-item">Number of Influencers Currently Working: {{ currently_working_count }}</li>
+            <li class="list-group-item">Total Money Spent: ${{ total_spent }}</li>
+        </ul>
+    </div>
+</body>
+</html>

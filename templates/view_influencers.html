@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Influencers</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Influencers</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Email</th>
+                    <th>Niche</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for infl in influencers %}
+                <tr>
+                    <td>{{ infl.inflid }}</td>
+                    <td>{{ infl.Name }}</td>
+                    <td>{{ infl.Category }}</td>
+                    <td>{{ infl.Niche }}</td>
+                    <td>{{ infl.Reach }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

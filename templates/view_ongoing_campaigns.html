@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Ongoing Campaigns</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Ongoing Campaigns</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Campaign ID</th>
+                    <th>Influencer ID</th>
+                    <th>Request ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ongoing in ongoing_camps %}
+                <tr>
+                    <td>{{ ongoing.cid }}</td>
+                    <td>{{ ongoing.iid }}</td>
+                    <td>{{ ongoing.reqid }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
