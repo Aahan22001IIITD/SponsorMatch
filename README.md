@@ -62,7 +62,7 @@ This project is a web application designed to manage campaigns between sponsors 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/yourrepository.git
+   git clone https://github.com/Aahan22001IIITD/https://github.com/Aahan22001IIITD/SponsorMatch
    python code/app.py
    ```
 Usage
